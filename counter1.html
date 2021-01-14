@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Counter</title>
+        <script>
+
+            let counter = 0;
+
+            /*
+            //Alert pop up
+            function count(){
+                counter++;
+                alert(counter);
+            }
+            */
+
+            //Count template
+            function count(){
+                counter++;
+                document.querySelector('h1').innerHTML = counter;
+
+                //template
+                if (counter % 10 === 0){
+                    alert(`Count is now ${counter}`); // ` = allt gr + }
+                }
+            }
+
+            //event listener - functional programing (functions as values)
+
+            document.addEventListener('DOMContentLoaded', function(){
+                document.querySelector('button').onclick = count;
+            });
+
+
+        </script>
+    </head>
+    <body>
+        <h1>0</h1>
+
+            <!--
+            <button onclick="count()"> Count </button>
+             -->
+
+           <button> Count </button>
+    </body>
+</html>
