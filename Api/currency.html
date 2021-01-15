@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Currency Exchange</title>
+    <script>
+
+    //synchronous JavaScript And XML, which allows us to access information from external pages even after our page has loaded.
+        document.addEventListener("DOMContentLoaded", function() {
+
+            //With form
+            document.querySelector("form").onsubmit = function() {
+                fetch("https://api.exchangeratesapi.io/latest?base=USD") //request
+                .then(response => response.json()) //get respond and convert to json
+                //.then(data => {console.log(data); }); // Log data to the console
+                .then(data => {
+                    const currency = document.querySelector("#currency").value.toUpperCase(); //get input from form - convert to uppercase
+                    const rate = data.rates[currency];   //get json(data) "rates.currency"
+
+                    //condicionar si es valido
+                    if (rate !== undefined) {
+                        //take rate.EUR to put in body
+                        document.querySelector("#result").innerHTML = `1 USD es igual a ${rate.toFixed(3)} ${currency}`; //toFixed(decimals)
+                    }
+                    else {
+                        document.querySelector("#result").innerHTML = "Invalid currency";
+                    }
+
+
+            });
+                // catch unexpected error
+                .catch(error => {
+                    console.log("Error", error);
+                });
+
+                //mantain locally
+                return false;
+        }
+
+
+            /*
+            //Whitout Form
+            fetch("https://api.exchangeratesapi.io/latest?base=USD") //request
+            .then(response => response.json()) //get respond and convert to json
+            //.then(data => {console.log(data); }); // Log data to the console
+            .then(data => { const rate = data.rates.EUR;   //get json(data) "rates.EUR"
+            //take rate.EUR to put in body
+            document.querySelector("body").innerHTML = `1 USD es igual a ${rate.toFixed(3)} EUR`; //toFixed(decimals)
+            });
+            */
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+    <form>
+        <input id="currency" placeholder="Currency" type="text">
+        <input type="submit" value="Convert">
+    </form>
+
+    <div id="result">
+
+    </div>
+
+</body>
+</html>
