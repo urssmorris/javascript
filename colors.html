@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Colors </title>
+
+  <script>
+      //Runs when all page is loaded
+      document.addEventListener('DOMContentLoaded', function(){     //document.addEventListener('DOMContentLoaded', () => {
+
+          /*
+          //documentqueryselector only one element(first)
+          //change font to red
+          document.querySelector("#red").onclick = function(){
+              document.querySelector("#hello").style.color = "red";
+          }
+          //change font to blue
+          document.querySelector("#blue").onclick = function(){
+              document.querySelector("#hello").style.color = "blue";
+          }
+          //change font to green
+          document.querySelector("#green").onclick = function(){
+              document.querySelector("#hello").style.color = "green";
+          }
+          */
+
+
+          /*
+          //querySelectorAll returns array that match queries(all buttons)
+          //Arrow notation  //document.querySelectorAll("button").forEach(function(button => { .... }
+                            //document.addEventListener('DOMContentLoaded', () => { ... } //Empty function
+          document.querySelectorAll("button").forEach(function(button){
+              button.onclick = function() {
+                  document.querySelector("#hello").style.color = button.dataset.color;
+              }
+          });*/
+
+
+          document.querySelector("select").onchange = function() {
+              document.querySelector("#hello").style.color = this.value;
+          }
+
+      });
+  </script>
+
+</head>
+
+<body>
+
+  <h1 id="hello"> Hello! </h1>
+
+    <!-- data attributes -->
+  <!-- <button data-color="red">Red</button>
+  <button data-color="blue">Blue</button>
+  <button data-color="green">Green</button> -->
+
+  <select>
+      <option value="black">Black</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+  </select>
+
+</body>
+</html>
