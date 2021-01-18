@@ -5,7 +5,7 @@
         <style>
         </style>
         <script>
-
+            <!-- When go back in history change state stored  -->
             window.onpopstate = function(event) {
                 console.log(event.state.section);
                 showSection(event.state.section);
@@ -26,6 +26,7 @@
                 document.querySelectorAll('button').forEach(button => {
                     button.onclick = function() {
                         const section = this.dataset.section;
+                        <!-- Add new element to browsing history  -->
                         history.pushState({section: section}, "", `section${section}`);
                         showSection(section);
                     };
