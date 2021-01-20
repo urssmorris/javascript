@@ -27,7 +27,7 @@
                 super(props);
                 //js object containing values/states
                 this.state = {
-                    count: 0
+                    score: 0
                 };
             }
             
@@ -37,21 +37,13 @@
                 return (
 
                     <div>
-
-                        <h1>{this.state.count}</h1>
+                        <div> Score: {this.state.score}</div>
                         
-                        <button onClick={this.count}>Count</button>
-                        count : {this.state.count}
 
                     </div>
                 );
             }
             
-            count = () => {
-                this.setState(state => ({
-                    count: state.count + 1
-                }));
-            }
         }
 
         ReactDOM.render(<App />, document.querySelector("#app"));
