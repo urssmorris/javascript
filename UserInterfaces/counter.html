@@ -21,16 +21,35 @@
 
         //Create class(extends react!)
         class App extends React.Component {
+            
+            //give internal state
+            constructor(props){
+                super(props);
+                //js object containing values/states
+                this.state = {
+                    count: 0
+                };
+            }
+            
+            
+            
             render() {
                 return (
 
                     <div>
 
-                        <h1>0</h1>
-                        <button>Count</button>
+                        <h1>{this.state.count}</h1>
+                        
+                        <button onClick={this.count}>Count</button>
 
                     </div>
                 );
+            }
+            
+            count = () => {
+                this.setState(state => ({
+                    count: state.count + 1
+                }));
             }
         }
 
